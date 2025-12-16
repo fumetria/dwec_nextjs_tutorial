@@ -5,12 +5,14 @@ import { Suspense } from "react";
 import { lusitana } from "@/app/ui/fonts";
 import Search from "@/app/ui/search";
 import { CreateCustomer } from "@/app/ui/customers/buttons";
+import { connection } from "next/server";
 
 export const metadata: Metadata = {
   title: "Customers",
 };
 
 export default async function Page() {
+  await connection();
   const filteredCustomers = await fetchAllCustomersData();
   return (
     <div className="w-full">
