@@ -1,11 +1,12 @@
 import { Customer } from "@/app/lib/definitions";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
+import { createCustomer } from "@/app/lib/actions";
 
 export default function Form() {
   return (
     <>
-      <form action="">
+      <form action={createCustomer}>
         <div className="grid w-full rounded-md bg-gray-50 p-4 md:p-6">
           <div className="grid mb-4">
             <label htmlFor="name">Customer name</label>
@@ -13,7 +14,7 @@ export default function Form() {
               type="text"
               id="name"
               name="name"
-              className="rounded"
+              className="rounded-md border border-gray-200 text-sm"
               placeholder="Customer name"
             />
           </div>
@@ -23,6 +24,7 @@ export default function Form() {
               type="email"
               id="email"
               name="email"
+              className="rounded-md border border-gray-200 text-sm"
               placeholder="Customer email"
             />
           </div>
@@ -32,6 +34,7 @@ export default function Form() {
               type="text"
               id="imgage_url"
               name="image_url"
+              className="rounded-md border border-gray-200 text-sm"
               placeholder="Customer image url"
             />
           </div>
