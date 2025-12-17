@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, PencilIcon } from "@heroicons/react/24/outline";
 
 export function CreateCustomer() {
   return (
@@ -9,6 +9,17 @@ export function CreateCustomer() {
     >
       <span className="hidden md:block">New Customer</span>{" "}
       <PlusIcon className="h-5 md:ml-4" />
+    </Link>
+  );
+}
+
+export function UpdateCustomer({ id }: { id: string }) {
+  return (
+    <Link
+      href={`/dashboard/invoices/${id}/edit`}
+      className="rounded p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100"
+    >
+      <PencilIcon className="w-5" />
     </Link>
   );
 }
