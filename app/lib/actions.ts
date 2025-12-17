@@ -141,3 +141,23 @@ export async function authenticate(
         throw error;
     }
 }
+
+const CustomerFormSchema = z.object({
+    id: z.string(),
+    name: z.string({
+        invalid_type_error: 'Please insert a customer name'
+    }),
+    email: z.string().email({ message: 'Please insert a valid email' }),
+    image_url: z.string().url({ message: 'Please insert a valid url' }),
+})
+
+const CreateCustomer = CustomerFormSchema.omit({ id: true })
+
+export async function createCustomer(formData: FormData) {
+    const rawFormData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        image_url: formData.get('image_url')
+    };
+    console.log(rawFormData);
+}
