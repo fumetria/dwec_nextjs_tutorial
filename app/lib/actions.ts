@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import postgres from 'postgres';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
+import { Customer } from './definitions';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
@@ -148,16 +149,27 @@ const CustomerFormSchema = z.object({
         invalid_type_error: 'Please insert a customer name'
     }),
     email: z.string().email({ message: 'Please insert a valid email' }),
-    image_url: z.string().url({ message: 'Please insert a valid url' }),
+    image_url: z.string({ invalid_type_error: 'Please insert a valid url' })
 })
 
 const CreateCustomer = CustomerFormSchema.omit({ id: true })
 
 export async function createCustomer(formData: FormData) {
-    const rawFormData = {
+    const { name, email, image_url } = CreateCustomer.parse({
         name: formData.get('name'),
         email: formData.get('email'),
         image_url: formData.get('image_url')
-    };
-    console.log(rawFormData);
+    });
+
+    try {
+        await sql`
+        INSERT INTO customers (name, email, image_url)
+        VALUES (${name}, ${email}, ${image_url})
+        ;`
+    } catch (error) {
+        console.error(error);
+        throw new Error('Database Error: Failed to Create new Customer.');
+    }
+    revalidatePath('/dashboard/customers');
+    redirect('/dashboard/customers');
 }
