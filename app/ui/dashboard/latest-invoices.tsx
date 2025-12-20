@@ -8,13 +8,15 @@ export default async function LatestInvoices() {
 
   return (
     <div className="flex w-full flex-col md:col-span-4">
-      <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+      <h2
+        className={`${lusitana.className} mb-4 text-xl md:text-2xl dark:text-slate-50`}
+      >
         Latest Invoices
       </h2>
-      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
+      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 dark:bg-slate-800 p-4">
         {/* NOTE: Uncomment this code in Chapter 7 */}
 
-        <div className="bg-white px-6">
+        <div className="bg-white dark:bg-slate-900 px-6 rounded-xl">
           {latestInvoices.map((invoice, i) => {
             return (
               <div
@@ -22,7 +24,7 @@ export default async function LatestInvoices() {
                 className={clsx(
                   "flex flex-row items-center justify-between py-4",
                   {
-                    "border-t": i !== 0,
+                    "border-t dark:border-slate-400": i !== 0,
                   }
                 )}
               >
@@ -35,16 +37,16 @@ export default async function LatestInvoices() {
                     height={32}
                   />
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold md:text-base">
+                    <p className="truncate text-sm font-semibold dark:text-slate-50 md:text-base">
                       {invoice.name}
                     </p>
-                    <p className="hidden text-sm text-gray-500 sm:block">
+                    <p className="hidden text-sm text-gray-500 dark:text-slate-400 sm:block">
                       {invoice.email}
                     </p>
                   </div>
                 </div>
                 <p
-                  className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
+                  className={`${lusitana.className} truncate text-sm font-medium dark:text-slate-50 md:text-base`}
                 >
                   {invoice.amount}
                 </p>
@@ -53,8 +55,10 @@ export default async function LatestInvoices() {
           })}
         </div>
         <div className="flex items-center pb-2 pt-6">
-          <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
+          <ArrowPathIcon className="h-5 w-5 text-gray-500 dark:text-slate-50" />
+          <h3 className="ml-2 text-sm text-gray-500 dark:text-slate-50">
+            Updated just now
+          </h3>
         </div>
       </div>
     </div>
