@@ -24,7 +24,7 @@ export default async function LatestInvoices() {
                 className={clsx(
                   "flex flex-row items-center justify-between py-4",
                   {
-                    "border-t dark:border-slate-400": i !== 0,
+                    "border-t dark:border-slate-800": i !== 0,
                   }
                 )}
               >
