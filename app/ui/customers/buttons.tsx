@@ -22,7 +22,7 @@ export function UpdateCustomer({ id }: { id: string }) {
   return (
     <Link
       href={`/dashboard/invoices/${id}/edit`}
-      className="rounded p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100"
+      className="rounded p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100 dark:bg-slate-800 dark:hover:bg-cyan-400 dark:hover:text-slate-500 dark:border-slate-500"
     >
       <PencilIcon className="w-5" />
     </Link>
@@ -33,7 +33,7 @@ export function DeleteCustomer({ id }: { id: string }) {
   return (
     <>
       <form action="">
-        <button className="rounded-md p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100">
+        <button className="rounded-md p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100 dark:bg-slate-800 dark:hover:bg-cyan-400 dark:hover:text-slate-500 dark:border-slate-500">
           <TrashIcon className="w-5" />
         </button>
       </form>
@@ -45,7 +45,7 @@ export function ShowCustomerInvoices({ name }: { name: string }) {
   return (
     <Link
       href={`/dashboard/invoices?query=${name}`}
-      className="rounded p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100"
+      className="rounded p-2 hover:bg-gray-100 border border-gray-50 shadow hover:border-gray-100 dark:bg-slate-800 dark:hover:bg-cyan-400 dark:hover:text-slate-500 dark:border-slate-500"
       title={`Show invoices from ${name}`}
     >
       <DocumentMagnifyingGlassIcon className="w-5" />

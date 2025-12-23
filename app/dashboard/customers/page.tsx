@@ -17,7 +17,9 @@ export default async function Page() {
   return (
     <div className="w-full">
       <div>
-        <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
+        <h1
+          className={`${lusitana.className} mb-8 text-xl md:text-2xl dark:text-slate-50`}
+        >
           Customers
         </h1>
       </div>
